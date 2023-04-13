@@ -17,11 +17,6 @@ class PeminjamanController extends Controller
                     ->leftJoin('buku','peminjaman.id','=','buku.id')
                     ->leftJoin('siswa','peminjaman.id','=','siswa.id')
                     ->get();
-        // DB::table('peminjaman')->join('buku','id_buku','=','id','leftjoin')
-        // $id_buku = DB::table('siswa')->get('id');
-        // $id_siswa = DB::table('buku')->get('id');
-        // $buku = DB::table('buku')->where('id',$id_buku || 0)->get();
-        // $siswa = DB::table('siswa')->where('id',$id_siswa || 0)->get();
         return view('admin.peminjaman.index',['peminjaman'=>$peminjaman]);
     }
 
@@ -41,7 +36,6 @@ class PeminjamanController extends Controller
             return redirect('/admin/peminjaman')->with("error","Stock Buku Telah Habis Silahkan Pinjam Buku Lainnya !");
         }
 
-        //jika peminjaman dilakukan maka stock buku akan berkurang
         $stock = $buku->stock - 1;
 
         // print($stock);
