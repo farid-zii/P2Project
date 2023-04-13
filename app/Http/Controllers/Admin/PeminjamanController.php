@@ -12,7 +12,6 @@ class PeminjamanController extends Controller
 {
 
     public function read(){
-
         $peminjaman =DB::table('peminjaman')
                     ->select('peminjaman.id','buku.nama as nama_buku','siswa.nama as nama_siswa', 'tgl_pinjam' ,'tgl_kembali', 'status')
                     ->leftJoin('buku','peminjaman.id','=','buku.id')
