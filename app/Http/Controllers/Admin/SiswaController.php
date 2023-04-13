@@ -10,7 +10,7 @@ use File;
 class SiswaController extends Controller
 {
     public function read(){
-        $siswa = DB::table('siswa')->orderBy('id_siswa','DESC')->get();
+        $siswa = DB::table('siswa')->orderBy('id','DESC')->get();
         return view('admin.siswa.index',['siswa'=>$siswa]);
     }
 
@@ -23,7 +23,7 @@ class SiswaController extends Controller
           if($request->file('foto') != "") {
             $name = uniqid().".png";
             $dokumen->move(public_path() . "/images/siswa", $name);
-            DB::table('siswa')->insert([  
+            DB::table('siswa')->insert([
                 'nis' => $request->nis,
                 'nama' => $request->nama,
                 'jekel' => $request->jekel,
@@ -31,7 +31,7 @@ class SiswaController extends Controller
                 'alamat' => $request->alamat,
                 'foto' => $name]);
           } else {
-            DB::table('siswa')->insert([  
+            DB::table('siswa')->insert([
                 'nis' => $request->nis,
                 'nama' => $request->nama,
                 'jekel' => $request->jekel,
@@ -39,34 +39,34 @@ class SiswaController extends Controller
                 'alamat' => $request->alamat,]);
           }
 
-          DB::table('users')->insert([  
+          DB::table('users')->insert([
             'username' => $request->nis,
             'password' => bcrypt('MTCNN2022'),
             'name' => $request->nama,
             'level' => '2']);
-        
+
         return redirect('/admin/siswa')->with("success","Data Berhasil Ditambah !");
     }
 
     public function detail($id){
-        $siswa= DB::table('siswa')->where('id_siswa',$id)->first();
+        $siswa= DB::table('siswa')->where('id',$id)->first();
         return view('admin.siswa.detail',['siswa'=>$siswa]);
     }
 
     public function edit($id){
-        $siswa= DB::table('siswa')->where('id_siswa',$id)->first();
+        $siswa= DB::table('siswa')->where('id',$id)->first();
         return view('admin.siswa.edit',['siswa'=>$siswa]);
     }
 
     public function update(Request $request, $id) {
-        $siswa= DB::table('siswa')->where('id_siswa',$id)->first();
+        $siswa= DB::table('siswa')->where('id',$id)->first();
         $dokumen = $request->file('foto');
         if($request->file('foto') != "") {
             $name = uniqid().".png";
             unlink(public_path() . '/images/siswa/' . $siswa->foto);
             $dokumen->move(public_path() . "/images/siswa", $name);
-            DB::table('siswa')  
-                ->where('id_siswa', $id)
+            DB::table('siswa')
+                ->where('id', $id)
                 ->update([
                     'nis' => $request->nis,
                     'nama' => $request->nama,
@@ -75,8 +75,8 @@ class SiswaController extends Controller
                     'alamat' => $request->alamat,
                     'foto' => $foto]);
         } else {
-            DB::table('siswa')  
-                ->where('id_siswa', $id)
+            DB::table('siswa')
+                ->where('id', $id)
                 ->update([
                     'nis' => $request->nis,
                     'nama' => $request->nama,
@@ -91,7 +91,7 @@ class SiswaController extends Controller
     {
         $siswa= DB::table('siswa')->find($id);
         File::delete('images/siswa/'.$siswa->foto);
-        DB::table('siswa')->where('id_siswa',$id)->delete();
+        DB::table('siswa')->where('id',$id)->delete();
         return redirect('/admin/siswa')->with("success","Data Berhasil Didelete !");
     }
 }

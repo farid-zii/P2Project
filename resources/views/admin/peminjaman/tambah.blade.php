@@ -40,9 +40,9 @@
                       <select class="form-control" name="id_buku" required>
                         <option value="">-- Pilih --</option>
                         @foreach($buku as $buku)
-                          <option value="{{$buku->id_buku}}">{{$buku->nama}}</option>
+                          <option value="{{$buku->id}}">{{$buku->nama}}</option>
                         @endforeach
-                      </select> 
+                      </select>
                       </div>
                     </div>
                     <div class="form-group">
@@ -53,7 +53,7 @@
                         @foreach($siswa as $data)
                           <option value="{{$data->nis}}">{{$data->nama}}</option>
                         @endforeach
-                      </select> 
+                      </select>
                       </div>
                     </div>
                     <div class="form-group">
@@ -68,7 +68,7 @@
                           <input type="date" required class="form-control" name="tgl_kembali" placeholder="">
                       </div>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary mt-1 mr-2"><i class="mdi mdi-content-save-all"></i> Tambah Data</button>
                   </form>
                 </div>
@@ -76,6 +76,6 @@
             </div>
           </div>
         </div>
-      
+
         <!-- content-wrapper ends -->
 @endsection

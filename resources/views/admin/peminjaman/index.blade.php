@@ -64,23 +64,19 @@
                       <tbody>
                       <?php $no = 1; ?>
                         @foreach($peminjaman as $data)
-                        @foreach($buku as $buku)
-                        @foreach($siswa as $siswa)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
-                          <td>{{$buku->nama}}</td>
-                          <td>{{$siswa->nama}}</td>
+                          <td>{{$data->nama_siswa}}</td>
+                          <td>{{$data->nama_buku}}</td>
                           <td>{{$data->tgl_pinjam}}</td>
                           <td>{{$data->tgl_kembali}}</td>
                           <td>{{$data->status}}</td>
-                          
+
 
                           <td class="text-center">
                             <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="ti-trash"> Delete</i></button>
                           </td>
                         </tr>
-                        @endforeach
-                        @endforeach
                         @endforeach
                       </tbody>
                     </table>
@@ -93,18 +89,18 @@
         <!-- content-wrapper ends -->
         <!-- Modal -->
         @foreach($peminjaman as $data)
-        <!-- <div class="modal fade" id="data-{{$data->id_siswa}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="data-$data->id_siswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
                 <h2 class="text-center">Apakah Anda Yakin Menghapus Data Ini ?<h2><hr>
                 <div class="form-group">
                   <label for="exampleInputUsername1">Nama Buku</label>
-                  <label class="form-control">{{$data->id_buku}}</label>
+                  <label class="form-control">$data->id_buku</label>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputUsername1">Nama Siswa</label>
-                  <label class="form-control">{{$data->id_siswa}}</label>
+                  <label class="form-control">$data->id_siswa</label>
                 </div>
                 <div class="row mt-1">
                   <div class="col-md-6">

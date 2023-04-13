@@ -68,17 +68,17 @@
                         @foreach($siswa as $data)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
-                          <td>{{$data->id_siswa}}</td>
+                          <td>{{$data->id}}</td>
                           <td>{{$data->nis}}</td>
                           <td>{{$data->nama}}</td>
                           <td>{{$data->jekel}}</td>
                           <td>{{$data->contact}}</td>
                           <td>{{$data->alamat}}</td>
-      
+
                           <td><a href="{{url('images/siswa')}}/{{$data->foto}}" target="_blank" class="btn btn-info btn-sm"><i class="ti-image"></i> Lihat Foto</a></td>
                           <td class="text-center">
-                            <a href="/admin/siswa/edit/{{$data->id_siswa}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
-                            <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id_siswa}}"><i class="ti-trash"> Delete</i></button>
+                            <a href="/admin/siswa/edit/{{$data->id}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
+                            <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="ti-trash"> Delete</i></button>
                           </td>
                         </tr>
                         @endforeach
@@ -93,7 +93,7 @@
         <!-- content-wrapper ends -->
         <!-- Modal -->
         @foreach($siswa as $data)
-        <div class="modal fade" id="data-{{$data->id_siswa}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="data-{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="row mt-1">
                   <div class="col-md-6">
-                    <a href="/admin/siswa/delete/{{$data->id_siswa}}" style="text-decoration: none;">
+                    <a href="/admin/siswa/delete/{{$data->id}}" style="text-decoration: none;">
                       <button type="button" class="btn btn-inverse-info btn-block">Ya</button>
                     </a>
                   </div>

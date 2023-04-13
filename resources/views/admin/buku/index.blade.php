@@ -67,17 +67,17 @@
                         @foreach($buku as $data)
                         <tr class="odd selected">
                           <td>{{$no++}}</td>
-                          <td>{{$data->id_buku}}</td>
+                          <td>{{$data->id}}</td>
                           <td>{{$data->nama}}</td>
                           <td>{{$data->penerbit}}</td>
                           <td>{{$data->pengarang}}</td>
                           <td>{{$data->tahun_terbit}}</td>
                           <td>{{$data->stock}}</td>
-                          
+
 
                           <td class="text-center">
-                            <a href="/admin/buku/edit/{{$data->id_buku}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
-                            <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id_buku}}"><i class="ti-trash"> Delete</i></button>
+                            <a href="/admin/buku/edit/{{$data->id}}"><button class="btn btn-inverse-success btn-sm"><i class="ti-pencil"> Edit</i></button></a>
+                            <button class="btn btn-inverse-danger btn-sm" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="ti-trash"> Delete</i></button>
                           </td>
                         </tr>
                         @endforeach
@@ -92,14 +92,14 @@
         <!-- content-wrapper ends -->
         <!-- Modal -->
         @foreach($buku as $data)
-        <div class="modal fade" id="data-{{$data->id_buku}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="data-{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-body">
                 <h2 class="text-center">Apakah Anda Yakin Menghapus Data Ini ?<h2><hr>
                 <div class="form-group">
                   <label for="exampleInputUsername1">Id Buku</label>
-                  <label class="form-control">{{$data->id_buku}}</label>
+                  <label class="form-control">{{$data->id}}</label>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputUsername1">Nama Buku</label>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="row mt-1">
                   <div class="col-md-6">
-                    <a href="/admin/buku/delete/{{$data->id_buku}}" style="text-decoration: none;">
+                    <a href="/admin/buku/delete/{{$data->id}}" style="text-decoration: none;">
                       <button type="button" class="btn btn-inverse-info btn-block">Ya</button>
                     </a>
                   </div>
